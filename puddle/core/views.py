@@ -4,4 +4,6 @@ from django.shortcuts import render
 def index(request):
     # render template, this will be available inside the template
     return render(request,'../templates/core/index.html' )
-# puddle\templates\core\index.html
+
+def contact(request):
+    return render(request, "../templates/core/contact.html")
