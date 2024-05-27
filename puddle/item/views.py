@@ -4,6 +4,13 @@ from django.contrib.auth.decorators import login_required
 from .forms import NewItemForm, EditItemForm
 
 # Create your views here.
+def browse(request):
+    items = Item.objects.filter(is_sold=False)
+    return render(request, 'item/browse.html',{
+        'items':items
+    })
+
+
 def details(request,pk):
     item = get_object_or_404(Item,pk=pk)
     related_items = Item.objects.filter(category=item.category, is_sold=False).exclude(pk=pk)[0:3]
